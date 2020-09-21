@@ -26,7 +26,7 @@ sequelize.sync({force: true}).then(function() {
     measurements: 'test'
   });
 })
-.then(() => console.log(`connected`))
+// .then(() => console.log(`connected`))
 .catch(err => console.error("initializing drink", err))
 
 module.exports.sequelize = sequelize;
