@@ -2,7 +2,7 @@
   "name": "immersion_mvp_2020",
   "version": "1.0.0",
   "description": "",
-  "main": "exampleData.js",
+  "private": true,
   "scripts": {
     "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,9 +20,16 @@
   },
   "homepage": "https://github.com/Bri-B/immersion_mvp_2020#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
