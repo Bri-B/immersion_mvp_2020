@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080;
 
 //path
 const path = require('path');
-app.use(express.static(__dirname + './../public'));
+app.use(express.static(__dirname + './../public')); //setting root html
 
 //middleware
 // app.use(express.json())
@@ -15,7 +15,8 @@ const testData = require('../exampleData');
 
 // CRUD methods
 app.get('/', (req, res) => {
-  res.send({test: false});
+  // res.send({test: true})
+  // res.sendFile(path.resolve(__dirname + './../exampleData.js'));// able to send back the file of example data
 })
 
 // listening on port
