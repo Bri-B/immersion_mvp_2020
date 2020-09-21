@@ -2,7 +2,9 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
-const {sequelize} = require('./db/drinksDB') // connecting mysql database
+const {sequelize} = require('./db/drinksDB'); // connecting mysql database
+// const axios = require('axios');
+const cocktailDBReq = require('./cocktaildb');
 
 //path
 const path = require('path');
@@ -24,6 +26,12 @@ sequelize
 // CRUD methods
 app.get('/', (req, res) => {
 
+})
+
+app.get('/button', (req, res) => {
+  cocktailDBReq()
+  .then(result => console.log("====>", result))
+  .catch(err => console.error("~~~axoisReq", err))
 })
 
 // listening on port
