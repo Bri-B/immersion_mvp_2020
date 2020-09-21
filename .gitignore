@@ -1,1 +1,6 @@
+# Don't include node modules because of size and the package json shows a list of the dependencies
 node_modules
+
+# ignore private files (.env files, port, url, password, username)
+
+#development modules, eslint doteslintrc files
