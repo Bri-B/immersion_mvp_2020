@@ -5,16 +5,7 @@ const sequelize = new Sequelize('drinks', 'root', '', {
   dialect: 'mysql'
 });
 
-sequelize
-  .authenticate()
-  .then(function(err) {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });
-
-const Drink = sequelize.define('user', {
+const Drink = sequelize.define('drink', {
   name: Sequelize.STRING,
   category: Sequelize.STRING,
   glass: Sequelize.STRING,
@@ -24,17 +15,18 @@ const Drink = sequelize.define('user', {
   measurements: Sequelize.STRING
 });
 
-// sequelize.sync({force: true}).then(function() {
-//   return Drink.create({
-//     name: 'test',
-//     category: 'test',
-//     glass: 'test',
-//     instructions: 'test',
-//     thumbnail: 'test',
-//     ingredientsList: 'test',
-//     measurements: 'test'
-//   });
-// })
-// .then(() => console.log(`connected`))
-// .catch(err => console.error("initializing drink", err))
+sequelize.sync({force: true}).then(function() {
+  return Drink.create({
+    name: 'test',
+    category: 'test',
+    glass: 'test',
+    instructions: 'test',
+    thumbnail: 'test',
+    ingredientsList: 'test',
+    measurements: 'test'
+  });
+})
+.then(() => console.log(`connected`))
+.catch(err => console.error("initializing drink", err))
+
 module.exports.sequelize = sequelize;
