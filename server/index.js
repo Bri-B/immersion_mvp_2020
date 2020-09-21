@@ -15,8 +15,7 @@ const testData = require('../exampleData');
 
 // CRUD methods
 app.get('/', (req, res) => {
-  // res.send({test: true})
-  // res.sendFile(path.resolve(__dirname + './../exampleData.js'));// able to send back the file of example data
+
 })
 
 // listening on port
