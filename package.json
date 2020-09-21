@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Bri-B/immersion_mvp_2020#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
     "mysql2": "^2.2.5",
