@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
+const sequelize = require('./db/drinksDB')
 
 //path
 const path = require('path');
