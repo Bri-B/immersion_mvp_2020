@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const _ = require('lodash');
 // const path = require('path');
 
 const app = express();
@@ -27,7 +28,7 @@ sequelize
   });
 
 // CRUD methods
-// app.get('/', (req, res) => {
+// app.get('/grab', (req, res) => {
 
 // });
 
@@ -43,7 +44,8 @@ app.get('/button', (req, res) => {
 
 app.get('/read', (req, res) => {
   grabAll()
-    .then((result) => res.json(result))
+    .then(result => _.map(result, drink => drink.name))
+    .then(result => res.json(result))
     .catch((err) => console.error('~~~axoisReq', err));
 });
 
