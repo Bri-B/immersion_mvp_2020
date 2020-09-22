@@ -1,26 +1,10 @@
 {
   "drinks": [
       {
-          "idDrink": "11664",
           "strDrink": "Lone Tree Cocktail",
-          "strDrinkAlternate": null,
-          "strDrinkES": null,
-          "strDrinkDE": null,
-          "strDrinkFR": null,
-          "strDrinkZH-HANS": null,
-          "strDrinkZH-HANT": null,
-          "strTags": null,
-          "strVideo": null,
           "strCategory": "Ordinary Drink",
-          "strIBA": null,
-          "strAlcoholic": "Alcoholic",
           "strGlass": "Cocktail glass",
           "strInstructions": "Stir ingredients with ice, strain into a cocktail glass, and serve.",
-          "strInstructionsES": null,
-          "strInstructionsDE": "Zutaten mit Eis verrühren, in ein Cocktailglas abseihen und servieren.",
-          "strInstructionsFR": null,
-          "strInstructionsZH-HANS": null,
-          "strInstructionsZH-HANT": null,
           "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tsxpty1468923417.jpg",
           "strIngredient1": "Sweet Vermouth",
           "strIngredient2": "Gin",
@@ -52,8 +36,7 @@
           "strMeasure13": null,
           "strMeasure14": null,
           "strMeasure15": null,
-          "strCreativeCommonsConfirmed": "No",
-          "dateModified": "2016-07-19 11:16:57"
+
       }
   ]
 }
