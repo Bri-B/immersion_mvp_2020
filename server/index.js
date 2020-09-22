@@ -44,8 +44,8 @@ app.get('/button', (req, res) => {
 
 app.get('/read', (req, res) => {
   grabAll()
-    .then(result => _.map(result, drink => drink.name))
-    .then(result => res.json(result))
+    .then((result) => _.map(result, (drink) => drink.name))
+    .then((result) => res.json(result))
     .catch((err) => console.error('~~~axoisReq', err));
 });
 
@@ -53,10 +53,16 @@ app.get('/read', (req, res) => {
 
 // });
 
-app.get('/delete', (req, res) => {
+app.delete('/delete', (req, res) => {
   const { name } = req.body;
   remove(name)
-    .then((result) => res.json(result))
+    .then((result) => {
+      if (result === 1) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+    })
     .catch((err) => console.error('~~~axoisReq', err));
 });
 

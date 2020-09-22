@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
@@ -27,6 +28,8 @@ class App extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleStateOnDelete = this.handleStateOnDelete.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +47,33 @@ class App extends React.Component {
           list: resultArr.data,
         });
       });
+  }
+
+  handleStateOnDelete() {
+    console.log('Updated OrderedList!');
+    axios({
+      url: 'http://localhost:8080/read',
+      method: 'get',
+    })
+      .then((resultArr) => {
+      // state change to track button click
+      // console.log(resultArr);
+        this.setState({
+          list: resultArr.data,
+        });
+      });
+  }
+
+  handleDelete(name) {
+    // axois request to server
+    console.log('Delete!', name);
+    this.handleStateOnDelete();
+    axios({
+      url: 'http://localhost:8080/delete',
+      method: 'delete',
+      data: { name },
+      // responseType: 'json'
+    });
   }
 
   handleClick() {
@@ -77,6 +107,7 @@ class App extends React.Component {
         <button onClick={this.handleClick}>Get Drink</button>
         <div>
           <List
+            onDelete={this.handleDelete}
             name={this.state.name}
             category={this.state.category}
             glass={this.state.glass}

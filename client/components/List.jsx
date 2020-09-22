@@ -4,11 +4,17 @@ import React from 'react';
 const _ = require('lodash');
 
 class List extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: props.name
+  //   };
+  // }
   render() {
     return (
       <div>
         <h1>Hello from List</h1>
-        <button onClick={this.handleClick} type="button" >Delete</button>
+        <button type="button" onClick={() => this.props.onDelete(this.props.name)}>Delete</button>
         <div>
           {_.map(this.props, (item, index) => <p key={index}>{item}</p>)}
         </div>
