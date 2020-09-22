@@ -15,18 +15,18 @@ const Drink = sequelize.define('drink', {
   measurements: Sequelize.STRING
 });
 
-sequelize.sync({force: true}).then(function() {
-  return Drink.create({
-    name: 'test',
-    category: 'test',
-    glass: 'test',
-    instructions: 'test',
-    thumbnail: 'test',
-    ingredientsList: 'test',
-    measurements: 'test'
-  });
-})
-// .then(() => console.log(`connected`))
-.catch(err => console.error("initializing drink", err))
+// sequelize.sync({force: true}).then(function() {
+//   return Drink.create({
+//     name: 'test',
+//     category: 'test',
+//     glass: 'test',
+//     instructions: 'test',
+//     thumbnail: 'test',
+//     ingredientsList: 'test',
+//     measurements: 'test'
+//   });
+// })
+// // .then(() => console.log(`connected`))
+// .catch(err => console.error("initializing drink", err))
 
 module.exports.sequelize = sequelize;

@@ -1,25 +1,38 @@
-require("lodash");
-const { array } = require("prop-types");
-
 getListOfIngredients = (obj) => {
-  _.filter(obj, ingredient => ingredient && ingredient.includes('Ingredient'))
+  let arr = [];
+  for(let key in obj){
+    if(key.includes('Ingredient')){
+      if(obj[key]){
+        arr.push(obj[key])
+      }
+    }
+  }
+  return arr;
 }
 getListOfMeasurements = (obj) => {
-  _.filter(obj, measurement => measurement && measurement.includes('Measure'))
+  let arr = [];
+  for(let key in obj){
+    if(key.includes('Measure')){
+      if(obj[key]){
+        arr.push(obj[key])
+      }
+    }
+  }
+  return arr;
 }
 
 module.exports.drinkFormatter = (resultsObj) => {
-  const [rawDrinkData] = resultsObj;
+  // console.log("^^^^^^^^", resultsObj);
   const drink = {
-    name: `${rawDrinkData.strDrink}`,
-    category: `${rawDrinkData.strCategory}`,
-    glass: `${rawDrinkData.strGlass}`,
-    instructions: `${rawDrinkData.strInstructions}`,
-    thumbnail: `${rawDrinkData.strDrinkThumb}`,
+    name: `${resultsObj.strDrink}`,
+    category: `${resultsObj.strCategory}`,
+    glass: `${resultsObj.strGlass}`,
+    instructions: `${resultsObj.strInstructions}`,
+    thumbnail: `${resultsObj.strDrinkThumb}`,
   }
   //may get syn issue
-  drink.ingredientsList = getListOfIngredients(resultsObj);
-  drink.measurements = getListOfMeasurements(resultsObj);
-  console.log("!!!!!!!", drink);
+  drink.ingredientsList = getListOfIngredients(resultsObj).join(",");
+  drink.measurements = getListOfMeasurements(resultsObj).join(",");
+  // console.log("!!!!!!!", getListOfIngredients(resultsObj));
   return drink;
 }

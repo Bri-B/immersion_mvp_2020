@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const {sequelize} = require('./db/drinksDB'); // connecting mysql database
-// const axios = require('axios');
+const {drinkFormatter} = require('./helpers/drinkFormatter');
 const cocktailDBReq = require('./cocktaildb');
 
 //path
@@ -13,7 +13,7 @@ app.use(express.static(__dirname + './../public')); //setting root html
 //middleware
 // app.use(express.json())
 
-//connect test sql connection
+//connect test sql connection 
 sequelize
   .authenticate()
   .then(function(err) {
@@ -34,8 +34,12 @@ app.get('/button', (req, res) => {
   // console.log("===>", cocktailDBReq)
   cocktailDBReq()
   .then(result => {
-    console.log("====>", result)
-    res.send({test: true})
+    // create obj to store in db
+    return drinkFormatter(result.data.drinks[0]);
+  })
+  .then(obj => {
+    console.log("**************")
+    res.send(obj)
   })
   .catch(err => console.error("~~~axoisReq", err))
 })
