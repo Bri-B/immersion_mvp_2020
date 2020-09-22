@@ -14,7 +14,7 @@ app.use(express.static(__dirname + './../public')); //setting root html
 //middleware
 app.use(express.json())
 
-//connect test sql connection 
+// connect test sql connection
 sequelize
   .authenticate()
   .then(function(err) {
@@ -36,7 +36,7 @@ app.get('/button', (req, res) => {
   .then(result => {
     res.json(result);
   })
-  .catch(err => console.error("~~~axoisReq", err))
+  .catch(err => console.error("~~~axoisReq", err));
 })
 
 app.get('/read', (req, res) => {
