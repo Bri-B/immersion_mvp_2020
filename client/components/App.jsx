@@ -1,6 +1,7 @@
 // import Button from 'Button';
 const React = require('react');
 const axios = require('axios');
+import List from './List.jsx';
 
 
 class App extends React.Component {
@@ -30,6 +31,9 @@ class App extends React.Component {
       <div>
         <h1>Header from APP.JSX </h1>
         <button onClick={this.handleClick}>Get Drink</button>
+        <div>
+          <List></List>
+        </div>
       </div>
     )
   }

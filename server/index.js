@@ -8,7 +8,7 @@ const {saveDrink, grabAll, remove} = require('./helpers/crudFunctions');
 const cocktailDBReq = require('./cocktaildb');
 
 //path
-const path = require('path');
+const path = require('path')
 app.use(express.static(__dirname + './../public')); //setting root html
 
 //middleware
