@@ -1,7 +1,7 @@
 const {Drink} = require('../db/drinksDB'); // connecting mysql database
 // create
 saveDrink = (obj) => {
-  // console.log("====>", obj);
+  // console.log("====>", obj); 
   return  Drink.create({
     name: obj.name,
     category: obj.category,
@@ -13,5 +13,12 @@ saveDrink = (obj) => {
   })
   .catch(err => console.error("initializing drink", err))
 }
+//read
+grabAll = () => Drink.findAll()
+
+//update
+
+//delete
 
 module.exports.saveDrink = saveDrink;
+module.exports.grabAll = grabAll;
