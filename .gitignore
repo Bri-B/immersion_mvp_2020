@@ -4,3 +4,5 @@ node_modules
 # ignore private files (.env files, port, url, password, username)
 
 #development modules, eslint doteslintrc files
+public/build
+server/db
