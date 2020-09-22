@@ -19,6 +19,15 @@ saveDrink = (obj) =>
 // read
 // grabAll = () => Drink.findAll({limit: 10, order: ['createdAt']})
 grabAll = () => Drink.findAll();
+
+// grabone
+// grabAll = () => Drink.findAll({limit: 10, order: ['createdAt']})
+grabOne = (name) => Drink.findOne({
+  where: {
+    name: name
+  },
+});
+
 // update
 
 // delete
@@ -31,3 +40,4 @@ remove = (name) => Drink.destroy({
 module.exports.saveDrink = saveDrink;
 module.exports.grabAll = grabAll;
 module.exports.remove = remove;
+module.exports.grabOne = grabOne;
