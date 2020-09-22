@@ -7,7 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const { sequelize } = require('./db/drinksDB'); // connecting mysql database
 const { drinkFormatter } = require('./helpers/drinkFormatter');
-const { saveDrink, grabAll, remove, grabOne } = require('./helpers/crudFunctions');
+const {
+  saveDrink, grabAll, remove, grabOne,
+} = require('./helpers/crudFunctions');
 const cocktailDBReq = require('./cocktaildb');
 
 // path
@@ -40,8 +42,8 @@ app.get('/button', (req, res) => {
     .then((result) => {
       res.json(result);
     })
-    .catch(err => {
-      console.error("button req", err);
+    .catch((err) => {
+      console.error('button req', err);
       res.sendStatus(500);
     });
 });
@@ -51,8 +53,8 @@ app.get('/read', (req, res) => {
   grabAll()
     .then((result) => _.map(result, (drink) => drink.name))
     .then((result) => res.json(result))
-    .catch(err => {
-      console.error("read req", err);
+    .catch((err) => {
+      console.error('read req', err);
       res.sendStatus(500);
     });
 });
@@ -61,17 +63,17 @@ app.get('/grabone', (req, res) => {
   console.log(`Serving ${req.method} at ${req.url}`);
   const { name } = req.query;
   grabOne(name)
-  .then(result => {
-    if(result){
-      res.status(200).json(result);
-    } else {
-      res.sendStatus(404);
-    }
-  })
-  .catch(err => {
-    console.error("grabOne", err);
-    res.sendStatus(500);
-  })
+    .then((result) => {
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res.sendStatus(404);
+      }
+    })
+    .catch((err) => {
+      console.error('grabOne', err);
+      res.sendStatus(500);
+    });
 });
 
 app.delete('/delete', (req, res) => {
@@ -85,8 +87,8 @@ app.delete('/delete', (req, res) => {
         res.sendStatus(400);
       }
     })
-    .catch(err => {
-      console.error("delete", err);
+    .catch((err) => {
+      console.error('delete', err);
       res.sendStatus(500);
     });
 });

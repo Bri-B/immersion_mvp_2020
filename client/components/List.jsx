@@ -18,7 +18,7 @@ class List extends React.Component {
         <div>
           {_.map(this.props, (item, index) => {
             if (`${item}`.includes('.jpg')) {
-              return <img src={item} />;
+              return <img key={index} src={item} />;
             }
             return <p key={index}>{item}</p>;
           })}

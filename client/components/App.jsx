@@ -6,6 +6,7 @@
 // import Button from 'Button';
 import List from './List.jsx';
 import OrderedList from './OrderedList.jsx';
+import RecipeTable from './RecipeTable.jsx';
 
 const React = require('react');
 const axios = require('axios');
@@ -92,13 +93,15 @@ class App extends React.Component {
   handleDelete(name) {
     // axois request to server
     console.log('Delete!', name);
-    this.handleStateOnDelete();
     axios({
       url: 'http://localhost:8080/delete',
       method: 'delete',
       data: { name },
       // responseType: 'json'
-    });
+    })
+      .then(() => {
+        this.handleStateOnDelete();
+      });
   }
 
   handleClick() {
@@ -138,12 +141,14 @@ class App extends React.Component {
             glass={this.state.glass}
             instructions={this.state.instructions}
             thumbnail={this.state.thumbnail}
+          />
+          <RecipeTable
             ingredientsList={this.state.ingredientsList}
             measurements={this.state.measurements}
           />
         </div>
         <div>
-          <OrderedList list={this.state.list} nameClick={this.handleNameClick}/>
+          <OrderedList list={this.state.list} nameClick={this.handleNameClick} />
         </div>
       </div>
     );

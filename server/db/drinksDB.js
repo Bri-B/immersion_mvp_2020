@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+
 const sequelize = new Sequelize('drinks', 'root', '', {
   host: 'localhost',
   port: 3306,
-  dialect: 'mysql'
+  dialect: 'mysql',
 });
 
 const Drink = sequelize.define('drink', {
@@ -12,8 +13,11 @@ const Drink = sequelize.define('drink', {
   instructions: Sequelize.TEXT,
   thumbnail: Sequelize.STRING,
   ingredientsList: Sequelize.STRING,
-  measurements: Sequelize.STRING
+  measurements: Sequelize.STRING,
 });
+
+// Drink.sync({ force: true }); // use when i want to empty the table
+Drink.sync();
 
 module.exports.sequelize = sequelize;
 module.exports.Drink = Drink;

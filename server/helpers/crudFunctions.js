@@ -24,7 +24,7 @@ grabAll = () => Drink.findAll();
 // grabAll = () => Drink.findAll({limit: 10, order: ['createdAt']})
 grabOne = (name) => Drink.findOne({
   where: {
-    name: name
+    name,
   },
 });
 

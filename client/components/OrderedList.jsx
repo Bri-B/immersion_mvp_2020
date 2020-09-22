@@ -5,10 +5,6 @@ import React from 'react';
 const _ = require('lodash');
 
 class OrderedList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <ul>
