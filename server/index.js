@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const {sequelize} = require('./db/drinksDB'); // connecting mysql database
 const {drinkFormatter} = require('./helpers/drinkFormatter');
-const {saveDrink, grabAll} = require('./helpers/crudFunctions');
+const {saveDrink, grabAll, remove} = require('./helpers/crudFunctions');
 const cocktailDBReq = require('./cocktaildb');
 
 //path
@@ -12,7 +12,7 @@ const path = require('path');
 app.use(express.static(__dirname + './../public')); //setting root html
 
 //middleware
-// app.use(express.json())
+app.use(express.json())
 
 //connect test sql connection 
 sequelize
@@ -50,7 +50,10 @@ app.get('/update', (req, res) => {
 })
 
 app.get('/delete', (req, res) => {
-
+  const {name} = req.body;
+  remove(name)
+  .then(result => res.json(result))
+  .catch(err => console.error("~~~axoisReq", err))
 })
 
 // listening on port
