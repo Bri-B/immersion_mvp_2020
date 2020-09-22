@@ -29,8 +29,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/button', (req, res) => {
+  // res.json({test: false}); // works
+  // redirect to home 
+  // console.log("===>", cocktailDBReq)
   cocktailDBReq()
-  .then(result => console.log("====>", result))
+  .then(result => {
+    console.log("====>", result)
+    res.send({test: true})
+  })
   .catch(err => console.error("~~~axoisReq", err))
 })
 
