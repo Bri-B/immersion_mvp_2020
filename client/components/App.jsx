@@ -55,7 +55,6 @@ class App extends React.Component {
     axios({
       url: 'http://localhost:8080/grabone',
       method: 'get',
-      data: { name },
       params: { name },
       // responseType: 'json'
     })

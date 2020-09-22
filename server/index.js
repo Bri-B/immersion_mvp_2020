@@ -60,8 +60,6 @@ app.get('/read', (req, res) => {
 app.get('/grabone', (req, res) => {
   console.log(`Serving ${req.method} at ${req.url}`);
   const { name } = req.query;
-  // console.log("@@@@@@@", req)
-  // console.log("@@@@@@@", name)
   grabOne(name)
   .then(result => {
     if(result){
