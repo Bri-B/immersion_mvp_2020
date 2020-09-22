@@ -16,7 +16,12 @@ class List extends React.Component {
         <h1>Hello from List</h1>
         <button type="button" onClick={() => this.props.onDelete(this.props.name)}>Delete</button>
         <div>
-          {_.map(this.props, (item, index) => <p key={index}>{item}</p>)}
+          {_.map(this.props, (item, index) => {
+            if (`${item}`.includes('.jpg')) {
+              return <img src={item} />;
+            }
+            return <p key={index}>{item}</p>;
+          })}
         </div>
       </div>
     );
