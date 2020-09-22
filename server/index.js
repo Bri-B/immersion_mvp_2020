@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const {sequelize} = require('./db/drinksDB'); // connecting mysql database
 const {drinkFormatter} = require('./helpers/drinkFormatter');
+const {saveDrink} = require('./helpers/crudFunctions');
 const cocktailDBReq = require('./cocktaildb');
 
 //path
@@ -29,17 +30,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/button', (req, res) => {
-  // res.json({test: false}); // works
-  // redirect to home 
-  // console.log("===>", cocktailDBReq)
   cocktailDBReq()
+  .then(result => drinkFormatter(result.data.drinks[0]))
+  .then(obj => saveDrink(obj))
   .then(result => {
-    // create obj to store in db
-    return drinkFormatter(result.data.drinks[0]);
-  })
-  .then(obj => {
-    console.log("**************")
-    res.send(obj)
+    res.json(result);
   })
   .catch(err => console.error("~~~axoisReq", err))
 })
