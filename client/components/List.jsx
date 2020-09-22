@@ -8,6 +8,7 @@ class List extends React.Component {
     return (
       <div>
         <h1>Hello from List</h1>
+        <button onClick={this.handleClick} type="button" >Delete</button>
         <div>
           {_.map(this.props, (item, index) => <p key={index}>{item}</p>)}
         </div>
