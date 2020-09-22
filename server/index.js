@@ -33,6 +33,7 @@ sequelize
 // });
 
 app.get('/button', (req, res) => {
+  console.log(`Serving ${req.method} at ${req.url}`);
   cocktailDBReq()
     .then((result) => drinkFormatter(result.data.drinks[0]))
     .then((obj) => saveDrink(obj))
@@ -46,6 +47,7 @@ app.get('/button', (req, res) => {
 });
 
 app.get('/read', (req, res) => {
+  console.log(`Serving ${req.method} at ${req.url}`);
   grabAll()
     .then((result) => _.map(result, (drink) => drink.name))
     .then((result) => res.json(result))
@@ -56,7 +58,10 @@ app.get('/read', (req, res) => {
 });
 
 app.get('/grabone', (req, res) => {
-  const { name } = req.body;
+  console.log(`Serving ${req.method} at ${req.url}`);
+  const { name } = req.query;
+  // console.log("@@@@@@@", req)
+  // console.log("@@@@@@@", name)
   grabOne(name)
   .then(result => {
     if(result){
@@ -72,6 +77,7 @@ app.get('/grabone', (req, res) => {
 });
 
 app.delete('/delete', (req, res) => {
+  console.log(`Serving ${req.method} at ${req.url}`);
   const { name } = req.body;
   remove(name)
     .then((result) => {

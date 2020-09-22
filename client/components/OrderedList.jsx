@@ -13,7 +13,7 @@ class OrderedList extends React.Component {
     return (
       <ul>
         <h1>Hello from Ordered List</h1>
-        {_.map(this.props.list, (name, index) => <li key={index}>{name}</li>)}
+        {_.map(this.props.list, (name, index) => <li id="name" key={index} onClick={()=>this.props.nameClick(name)}>{name}</li>)}
       </ul>
     );
   }

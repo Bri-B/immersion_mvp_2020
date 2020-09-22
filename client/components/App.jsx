@@ -29,6 +29,7 @@ class App extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleNameClick = this.handleNameClick.bind(this);
     this.handleStateOnDelete = this.handleStateOnDelete.bind(this);
   }
 
@@ -47,6 +48,31 @@ class App extends React.Component {
           list: resultArr.data,
         });
       });
+  }
+
+  handleNameClick(name) { // axois request to server
+    console.log('name clicked!', name);
+    axios({
+      url: 'http://localhost:8080/grabone',
+      method: 'get',
+      data: { name },
+      params: { name },
+      // responseType: 'json'
+    })
+      .then((resultObj) => {
+        // state change to track button click
+        this.setState({
+          id: resultObj.data.id,
+          name: resultObj.data.name,
+          category: resultObj.data.category,
+          glass: resultObj.data.glass,
+          instructions: resultObj.data.instructions,
+          thumbnail: resultObj.data.thumbnail,
+          ingredientsList: resultObj.data.ingredientsList,
+          measurements: resultObj.data.measurements,
+        });
+      })
+      .catch((err) => console.error('click err', err));
   }
 
   handleStateOnDelete() {
@@ -118,7 +144,7 @@ class App extends React.Component {
           />
         </div>
         <div>
-          <OrderedList list={this.state.list} />
+          <OrderedList list={this.state.list} nameClick={this.handleNameClick}/>
         </div>
       </div>
     );
