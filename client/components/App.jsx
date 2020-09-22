@@ -3,7 +3,6 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable react/no-unused-state */
-// import Button from 'Button';
 import List from './List.jsx';
 import OrderedList from './OrderedList.jsx';
 import RecipeTable from './RecipeTable.jsx';
@@ -124,6 +123,9 @@ class App extends React.Component {
           ingredientsList: resultObj.data.ingredientsList,
           measurements: resultObj.data.measurements,
         });
+      })
+      .then(() => {
+        this.handleStateOnDelete();
       })
       .catch((err) => console.error('click err', err));
   }

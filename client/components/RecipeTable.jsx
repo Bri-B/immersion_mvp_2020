@@ -17,10 +17,10 @@ class RecipeTable extends React.Component {
             // zip array together
           // let arr = 
             // map over and apply template
-          _.map(_.zip(this.props.ingredientsList.split(","), this.props.measurements.split(",")), set => {
-            console.log(set);
+          _.map(_.zip(this.props.ingredientsList.split(","), this.props.measurements.split(",")), (set, index) => {
+            // console.log(set);
             return (
-              <tr>
+              <tr key={index}>
                 <td>{set[0]}</td>
                 <td>{set[1]}</td>
               </tr>
