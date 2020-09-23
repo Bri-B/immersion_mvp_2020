@@ -4,7 +4,7 @@ const _ = require('lodash');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const { sequelize } = require('./db/drinksDB'); // connecting mysql database
 const { drinkFormatter } = require('./helpers/drinkFormatter');
 const {

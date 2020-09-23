@@ -18,8 +18,17 @@ const Drink = sequelize.define('drink', {
   measurements: Sequelize.STRING,
 });
 
-// Drink.sync({ force: true }); // use when i want to empty the table
-Drink.sync();
+const User = sequelize.define('user', {
+  name: Sequelize.STRING,
+});
+
+User.hasMany(Drink);
+
+Drink.sync({ force: true }); // use when i want to empty the table
+// User.sync({ force: true });
+User.sync();
+// Drink.sync(); 
 
 module.exports.sequelize = sequelize;
 module.exports.Drink = Drink;
+module.exports.User = User;
