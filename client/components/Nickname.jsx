@@ -1,7 +1,8 @@
 /* eslint-disable no-useless-constructor */
 /* eslint-disable react/prefer-stateless-function */
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, InputGroup, FormControl } from 'react-bootstrap';
+import DOMPurify from 'dompurify';
 
 const _ = require('lodash');
 
@@ -16,8 +17,10 @@ class Nickname extends React.Component {
 
   handleChange(e) {
     // console.log("changed input", e.target.value)
+    const dirty = `${e.target.value}`;
+    const clean = DOMPurify.sanitize(dirty);
     this.setState({
-      input: e.target.value,
+      input: clean,
     });
   }
 
@@ -34,7 +37,7 @@ class Nickname extends React.Component {
               <InputGroup.Prepend>
                 <Button type="submit" onClick={() => { updateName(name, input); }} variant="outline-light">Personalize Drink Name</Button>
               </InputGroup.Prepend>
-              <FormControl as="textarea" aria-label="With textarea" placeholder="Drink Responsibly" size="sm" onChange={this.handleChange} />
+              <FormControl as="textarea" aria-label="With textarea" placeholder="... Remember to Always Drink Responsibly" size="sm" onChange={this.handleChange} />
             </InputGroup>
           </div>
           ) }
