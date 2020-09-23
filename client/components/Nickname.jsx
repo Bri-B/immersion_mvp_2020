@@ -20,7 +20,7 @@ class Nickname extends React.Component {
     const dirty = `${e.target.value}`;
     const clean = DOMPurify.sanitize(dirty);
     this.setState({
-      input: clean,
+      input: `${clean}`,
     });
   }
 
@@ -33,6 +33,7 @@ class Nickname extends React.Component {
         { name
           && (
           <div>
+            <br/>
             <InputGroup>
               <InputGroup.Prepend>
                 <Button type="submit" onClick={() => { updateName(name, input); }} variant="outline-light">Personalize Drink Name</Button>

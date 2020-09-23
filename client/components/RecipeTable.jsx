@@ -5,34 +5,27 @@ import { Table } from 'react-bootstrap';
 
 const _ = require('lodash');
 
-class RecipeTable extends React.Component {
-  render() {
-    return (
-      <Table hover>
-        <thead>
-          <tr>
-            <th className="table">Ingredient</th>
-            <th className="table">Measurement</th>
+const RecipeTable = (props) => (
+  <Table hover>
+    <thead>
+      <tr>
+        <th className="table">Ingredient</th>
+        <th className="table">Measurement</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        // zip array together
+        // map over and apply template
+        _.map(_.zip(props.ingredientsList.split(','), props.measurements.split(',')), (set, index) => (
+          <tr key={index}>
+            <td className="table">{set[0]}</td>
+            <td className="table">{set[1]}</td>
           </tr>
-        </thead>
-        <tbody>
-          {
-            // zip array together
-          // let arr =
-            // map over and apply template
-          _.map(_.zip(this.props.ingredientsList.split(','), this.props.measurements.split(',')), (set, index) =>
-            // console.log(set);
-            (
-              <tr key={index}>
-                <td className="table">{set[0]}</td>
-                <td className="table">{set[1]}</td>
-              </tr>
-            ))
-            }
-        </tbody>
-      </Table>
-    );
-  }
-}
+        ))
+      }
+    </tbody>
+  </Table>
+);
 
 export default RecipeTable;

@@ -44,11 +44,9 @@ class App extends React.Component {
     axios({
       url: 'http://localhost:8080/read',
       method: 'get',
-      // responseType: 'json'
     })
       .then((resultArr) => {
       // state change to track button click
-      // console.log(resultArr);
         this.setState({
           list: resultArr.data,
         });
@@ -61,7 +59,6 @@ class App extends React.Component {
       url: 'http://localhost:8080/grabone',
       method: 'get',
       params: { name },
-      // responseType: 'json'
     })
       .then((resultObj) => {
         // state change to track button click
@@ -87,7 +84,6 @@ class App extends React.Component {
     })
       .then((resultArr) => {
       // state change to track button click
-      // console.log(resultArr);
         this.setState({
           list: resultArr.data,
         });
@@ -100,7 +96,6 @@ class App extends React.Component {
       url: 'http://localhost:8080/update',
       method: 'put',
       data: { name, newName },
-      // responseType: 'json'
     })
       .then(() => this.handleStateOnDelete());
   }
@@ -112,7 +107,6 @@ class App extends React.Component {
       url: 'http://localhost:8080/delete',
       method: 'delete',
       data: { name },
-      // responseType: 'json'
     })
       .then(() => {
         this.handleStateOnDelete();
@@ -125,7 +119,6 @@ class App extends React.Component {
     axios({
       url: 'http://localhost:8080/button',
       method: 'get',
-      // responseType: 'json'
     })
       .then((resultObj) => {
       // state change to track button click
@@ -169,7 +162,7 @@ class App extends React.Component {
           <Col>
             <OrderedList list={list} nameClick={this.handleNameClick} />
           </Col>
-          <Col sm={8}>
+          <Col sm={7}>
             <List
               onUpdate={this.updateName}
               onDelete={this.handleDelete}

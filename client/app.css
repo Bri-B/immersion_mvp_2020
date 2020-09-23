@@ -33,3 +33,7 @@ p {
 .table {
   color: white;
 }
+h3{
+  color: white;
+  font-variant: small-caps;
+}
