@@ -31,6 +31,7 @@ class App extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleNameClick = this.handleNameClick.bind(this);
     this.handleStateOnDelete = this.handleStateOnDelete.bind(this);
+    this.updateName = this.updateName.bind(this);
   }
 
   componentDidMount() {
@@ -89,6 +90,19 @@ class App extends React.Component {
       });
   }
 
+  updateName(name, newName) {
+    console.log('update!', name);
+    axios({
+      url: 'http://localhost:8080/update',
+      method: 'put',
+      data: { name, newName },
+      // responseType: 'json'
+    })
+      .then(() => {
+        this.handleStateOnDelete();
+      });
+  }
+
   handleDelete(name) {
     // axois request to server
     console.log('Delete!', name);
@@ -137,6 +151,7 @@ class App extends React.Component {
         <button onClick={this.handleClick}>Get Drink</button>
         <div>
           <List
+            onUpdate={this.updateName}
             onDelete={this.handleDelete}
             name={this.state.name}
             category={this.state.category}

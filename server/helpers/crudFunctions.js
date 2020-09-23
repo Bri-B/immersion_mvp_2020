@@ -29,6 +29,10 @@ grabOne = (name) => Drink.findOne({
 });
 
 // update
+update = (name, newName) => Drink.update(
+  { name: newName },
+  { where: { name } },
+);
 
 // delete
 remove = (name) => Drink.destroy({
@@ -41,3 +45,4 @@ module.exports.saveDrink = saveDrink;
 module.exports.grabAll = grabAll;
 module.exports.remove = remove;
 module.exports.grabOne = grabOne;
+module.exports.update = update;

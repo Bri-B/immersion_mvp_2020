@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 const { sequelize } = require('./db/drinksDB'); // connecting mysql database
 const { drinkFormatter } = require('./helpers/drinkFormatter');
 const {
-  saveDrink, grabAll, remove, grabOne,
+  saveDrink, grabAll, remove, grabOne, update
 } = require('./helpers/crudFunctions');
 const cocktailDBReq = require('./cocktaildb');
 
@@ -30,9 +30,13 @@ sequelize
   });
 
 // CRUD methods
-// app.get('/grab', (req, res) => {
-
-// });
+app.put('/update', (req, res) => {
+  console.log(`Serving ${req.method} at ${req.url}`);
+  const { name, id } = req.body;
+  console.log("<===>", req.body);
+  // update(name)
+  // .then(result => res.send(result));
+});
 
 app.get('/button', (req, res) => {
   console.log(`Serving ${req.method} at ${req.url}`);
