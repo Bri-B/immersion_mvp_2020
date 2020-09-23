@@ -15,20 +15,22 @@ class List extends React.Component {
   }
 
   render() {
+    const { name, onUpdate, onDelete } = this.props;
     return (
       <div>
-        <Nickname updateName={this.props.onUpdate} name={this.props.name} />
-        <Button type="button" onClick={() => this.props.onDelete(this.props.name)} variant="outline-warning">Delete</Button>
+        <Nickname updateName={onUpdate} name={name} />
         <div>
           {_.map(this.props, (item, index) => {
+            if (index === 2) {
+              return <h2>{item}</h2>;
+            }
             if (`${item}`.includes('.jpg')) {
               return <Image key={index} src={item} fluid />;
-            } else if(index === 0){
-              return <p key={index} class="name">{item}</p>;
             }
             return <p key={index}>{item}</p>;
           })}
         </div>
+        { name && <Button type="button" onClick={() => onDelete(name)} variant="outline-warning">Delete From List</Button> }
       </div>
     );
   }

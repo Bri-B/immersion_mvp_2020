@@ -1,10 +1,12 @@
-body {  
-  background-color: black;  
-}  
-h1 {  
-  color: rgba(255, 0, 0, 0.596);  
-  margin-left: 20px;  
-}  
+body {
+  background-color: black;
+}
+
+h1 {
+  color: rgba(255, 0, 0, 0.596);
+  padding-bottom: 32px;
+}
+
 li {
   color: white;
 }
@@ -17,4 +19,17 @@ p {
 .name {
   font-weight: 300;
   font: bold;
+}
+
+.drink {
+  transition: all 0.25s ease-in;
+}
+
+.drink:hover {
+  cursor: pointer;
+  color: yellow;
+}
+
+.table {
+  color: white;
 }

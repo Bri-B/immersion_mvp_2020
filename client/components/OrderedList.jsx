@@ -6,10 +6,11 @@ const _ = require('lodash');
 
 class OrderedList extends React.Component {
   render() {
+    const { list, nameClick } = this.props;
     return (
-      <ul>
-        <h1>Results</h1>
-        {_.map(this.props.list, (name, index) => <li id="name" key={index} onClick={()=>this.props.nameClick(name)}>{name}</li>)}
+      <ul className="drinks-list">
+        <h1>View Drinks</h1>
+        {_.map(list, (name, index) => <li id="name" className="drink" key={index} onClick={()=>nameClick(name)}>{name}</li>)}
       </ul>
     );
   }

@@ -3,10 +3,13 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 /* eslint-disable react/no-unused-state */
+import {
+  Button, Container, Row, Col,
+} from 'react-bootstrap';
+
 import List from './List.jsx';
 import OrderedList from './OrderedList.jsx';
 import RecipeTable from './RecipeTable.jsx';
-import Button from 'react-bootstrap/Button';
 
 const React = require('react');
 const axios = require('axios');
@@ -144,29 +147,50 @@ class App extends React.Component {
   }
 
   render() {
+    const {
+      name,
+      category,
+      glass,
+      instructions,
+      thumbnail,
+      ingredientsList,
+      measurements,
+      list,
+    } = this.state;
     return (
-      <div>
-        <h1>Welcome to Drink Roulette!</h1>
-        <Button variant="outline-danger" onClick={this.handleClick} size="lg" block>Get Drink</Button>
-        <div>
-          <List
-            onUpdate={this.updateName}
-            onDelete={this.handleDelete}
-            name={this.state.name}
-            category={this.state.category}
-            glass={this.state.glass}
-            instructions={this.state.instructions}
-            thumbnail={this.state.thumbnail}
-          />
-          <RecipeTable
-            ingredientsList={this.state.ingredientsList}
-            measurements={this.state.measurements}
-          />
-        </div>
-        <div>
-          <OrderedList list={this.state.list} nameClick={this.handleNameClick} />
-        </div>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <h1>Welcome to Drink Roulette!</h1>
+            <Button variant="outline-danger" onClick={this.handleClick} size="lg" block>Get Drink</Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <OrderedList list={list} nameClick={this.handleNameClick} />
+          </Col>
+          <Col sm={8}>
+            <List
+              onUpdate={this.updateName}
+              onDelete={this.handleDelete}
+              name={name}
+              category={category}
+              glass={glass}
+              instructions={instructions}
+              thumbnail={thumbnail}
+            />
+            {
+            ingredientsList
+            && (
+            <RecipeTable
+              ingredientsList={ingredientsList}
+              measurements={measurements}
+            />
+            )
+            }
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

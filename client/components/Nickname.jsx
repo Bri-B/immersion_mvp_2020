@@ -22,14 +22,22 @@ class Nickname extends React.Component {
   }
 
   render() {
+    const { name, updateName } = this.props;
+    const { input } = this.state;
+
     return (
       <div>
-        <InputGroup>
-          <InputGroup.Prepend>
-            <Button type="submit" onClick={() => { this.props.updateName(this.props.name, this.state.input); }} variant="outline-light">Update</Button>
-          </InputGroup.Prepend>
-          <FormControl as="textarea" aria-label="With textarea" placeholder="Drink Responsibly" size="sm" onChange={this.handleChange} />
-        </InputGroup>
+        { name
+          && (
+          <div>
+            <InputGroup>
+              <InputGroup.Prepend>
+                <Button type="submit" onClick={() => { updateName(name, input); }} variant="outline-light">Personalize Drink Name</Button>
+              </InputGroup.Prepend>
+              <FormControl as="textarea" aria-label="With textarea" placeholder="Drink Responsibly" size="sm" onChange={this.handleChange} />
+            </InputGroup>
+          </div>
+          ) }
       </div>
     );
   }
