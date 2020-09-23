@@ -6,3 +6,4 @@ node_modules
 #development modules, eslint doteslintrc files
 public/build
 server/db
+server/index.js
