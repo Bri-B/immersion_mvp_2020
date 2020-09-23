@@ -18,7 +18,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 0,
       name: '',
       category: '',
       glass: '',
@@ -64,7 +63,6 @@ class App extends React.Component {
       .then((resultObj) => {
         // state change to track button click
         this.setState({
-          id: resultObj.data.id,
           name: resultObj.data.name,
           category: resultObj.data.category,
           glass: resultObj.data.glass,
@@ -115,15 +113,22 @@ class App extends React.Component {
       .then(() => {
         this.updateStateListArr();
       })
+      .then(() => {
+        this.setState({
+          name: '',
+          category: '',
+          glass: '',
+          instructions: '',
+          thumbnail: '',
+          ingredientsList: '',
+          measurements: '',
+          updatedAt: '',
+          createdAt: '',
+          currName: '',
+        })
+      })
       .catch((err) => console.error('handleDelete err', err));
   }
-  // updateCurrentNameOnClick(){
-  //   // personalize name is clicked
-  //   //updateName is called
-  //   // update list Arr is called
-
-  //   // names a get request with current name
-  // }
 
   getRandomDrink() {
     // axois request to server
@@ -135,7 +140,6 @@ class App extends React.Component {
       .then((resultObj) => {
       // state change to track button click
         this.setState({
-          id: resultObj.data.id,
           name: resultObj.data.name,
           category: resultObj.data.category,
           glass: resultObj.data.glass,
@@ -172,7 +176,7 @@ class App extends React.Component {
         </Row>
         <Row>
           <Col>
-            <OrderedList list={list} nameClick={this.handleNameClick} />
+            { list.length > 0 && <OrderedList list={list} nameClick={this.handleNameClick} />}
           </Col>
           <Col sm={7}>
             <List
