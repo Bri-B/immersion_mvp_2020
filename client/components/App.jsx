@@ -6,6 +6,7 @@
 import List from './List.jsx';
 import OrderedList from './OrderedList.jsx';
 import RecipeTable from './RecipeTable.jsx';
+import Button from 'react-bootstrap/Button';
 
 const React = require('react');
 const axios = require('axios');
@@ -145,8 +146,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Header from APP.JSX </h1>
-        <button onClick={this.handleClick}>Get Drink</button>
+        <h1>Welcome to Drink Roulette!</h1>
+        <Button variant="outline-danger" onClick={this.handleClick} size="lg" block>Get Drink</Button>
         <div>
           <List
             onUpdate={this.updateName}

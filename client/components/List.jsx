@@ -1,5 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+import { Button, Image } from 'react-bootstrap';
+// import Image from 'react-bootstrap/Image';
 import Nickname from './Nickname.jsx';
 
 const _ = require('lodash');
@@ -15,13 +17,14 @@ class List extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello from List</h1>
-        <Nickname updateName={this.props.onUpdate} name={this.props.name}/>
-        <button type="button" onClick={() => this.props.onDelete(this.props.name)}>Delete</button>
+        <Nickname updateName={this.props.onUpdate} name={this.props.name} />
+        <Button type="button" onClick={() => this.props.onDelete(this.props.name)} variant="outline-warning">Delete</Button>
         <div>
           {_.map(this.props, (item, index) => {
             if (`${item}`.includes('.jpg')) {
-              return <img key={index} src={item} />;
+              return <Image key={index} src={item} fluid />;
+            } else if(index === 0){
+              return <p key={index} class="name">{item}</p>;
             }
             return <p key={index}>{item}</p>;
           })}

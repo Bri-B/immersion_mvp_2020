@@ -20,12 +20,14 @@
   "homepage": "https://github.com/Bri-B/immersion_mvp_2020#readme",
   "dependencies": {
     "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
     "mysql2": "^2.2.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-axios": "^2.0.3",
+    "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
     "sequelize": "^6.3.5"
   },

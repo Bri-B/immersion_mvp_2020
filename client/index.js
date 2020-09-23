@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './components/App.jsx';
-// import List from './components/List.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../client/app.css';
 
 render(

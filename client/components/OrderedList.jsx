@@ -8,7 +8,7 @@ class OrderedList extends React.Component {
   render() {
     return (
       <ul>
-        <h1>Hello from Ordered List</h1>
+        <h1>Results</h1>
         {_.map(this.props.list, (name, index) => <li id="name" key={index} onClick={()=>this.props.nameClick(name)}>{name}</li>)}
       </ul>
     );
