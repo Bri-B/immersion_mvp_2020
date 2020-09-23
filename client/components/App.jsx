@@ -100,8 +100,7 @@ class App extends React.Component {
       data: { name, newName },
     })
       .then(() => this.updateStateListArr())
-      .then(() => this.setState({currName: name}))
-      .then(() => this.handleNameClick(this.state.currName))
+      .then(() => this.setState({ name: newName }))
       .catch((err) => console.error('updateName err', err));
   }
 
