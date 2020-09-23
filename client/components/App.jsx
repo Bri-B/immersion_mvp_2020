@@ -29,12 +29,13 @@ class App extends React.Component {
       updatedAt: '',
       createdAt: '',
       list: [],
+      currName: '',
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.getRandomDrink = this.getRandomDrink.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleNameClick = this.handleNameClick.bind(this);
-    this.handleStateOnDelete = this.handleStateOnDelete.bind(this);
+    this.updateStateListArr = this.updateStateListArr.bind(this);
     this.updateName = this.updateName.bind(this);
   }
 
@@ -73,10 +74,10 @@ class App extends React.Component {
           measurements: resultObj.data.measurements,
         });
       })
-      .catch((err) => console.error('click err', err));
+      .catch((err) => console.error('handleNameClick err', err));
   }
 
-  handleStateOnDelete() {
+  updateStateListArr() {
     console.log('Updated OrderedList!');
     axios({
       url: 'http://localhost:8080/read',
@@ -87,7 +88,8 @@ class App extends React.Component {
         this.setState({
           list: resultArr.data,
         });
-      });
+      })
+      .catch((err) => console.error('updateStateListArr err', err));
   }
 
   updateName(name, newName) {
@@ -97,7 +99,10 @@ class App extends React.Component {
       method: 'put',
       data: { name, newName },
     })
-      .then(() => this.handleStateOnDelete());
+      .then(() => this.updateStateListArr())
+      .then(() => this.setState({currName: name}))
+      .then(() => this.handleNameClick(this.state.currName))
+      .catch((err) => console.error('updateName err', err));
   }
 
   handleDelete(name) {
@@ -109,11 +114,19 @@ class App extends React.Component {
       data: { name },
     })
       .then(() => {
-        this.handleStateOnDelete();
-      });
+        this.updateStateListArr();
+      })
+      .catch((err) => console.error('handleDelete err', err));
   }
+  // updateCurrentNameOnClick(){
+  //   // personalize name is clicked
+  //   //updateName is called
+  //   // update list Arr is called
 
-  handleClick() {
+  //   // names a get request with current name
+  // }
+
+  getRandomDrink() {
     // axois request to server
     console.log('clicked!');
     axios({
@@ -134,9 +147,9 @@ class App extends React.Component {
         });
       })
       .then(() => {
-        this.handleStateOnDelete();
+        this.updateStateListArr();
       })
-      .catch((err) => console.error('click err', err));
+      .catch((err) => console.error('getRandomDrink err', err));
   }
 
   render() {
@@ -155,7 +168,7 @@ class App extends React.Component {
         <Row>
           <Col>
             <h1>Welcome to Drink Roulette!</h1>
-            <Button variant="outline-danger" onClick={this.handleClick} size="lg" block>Get Drink</Button>
+            <Button variant="outline-danger" onClick={this.getRandomDrink} size="lg" block>Get Drink</Button>
           </Col>
         </Row>
         <Row>
