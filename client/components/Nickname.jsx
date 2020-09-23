@@ -14,6 +14,7 @@ class Nickname extends React.Component {
   }
 
   handleChange(e) {
+    // console.log("changed input", e.target.value)
     this.setState({
       input: e.target.value,
     });

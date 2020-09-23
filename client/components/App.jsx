@@ -91,15 +91,16 @@ class App extends React.Component {
   }
 
   updateName(name, newName) {
-    console.log('update!', name);
+    console.log('update!', name, newName);
     axios({
       url: 'http://localhost:8080/update',
       method: 'put',
       data: { name, newName },
       // responseType: 'json'
     })
-      .then(() => {
-        this.handleStateOnDelete();
+      .then(result => {
+        console.log(result);
+        // this.handleStateOnDelete();
       });
   }
 

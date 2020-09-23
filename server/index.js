@@ -32,10 +32,13 @@ sequelize
 // CRUD methods
 app.put('/update', (req, res) => {
   console.log(`Serving ${req.method} at ${req.url}`);
-  const { name, id } = req.body;
-  console.log("<===>", req.body);
-  // update(name)
-  // .then(result => res.send(result));
+  const { name, newName } = req.body;
+  update(name, newName)
+  .then(result => res.status(200).send(result))
+  .catch((err) => {
+    console.error('update', err);
+    res.sendStatus(500);
+  });
 });
 
 app.get('/button', (req, res) => {
