@@ -4,7 +4,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/no-unused-state */
 import {
-  Button, Container, Row, Col,
+  Button, Container, Row, Col, Image,
 } from 'react-bootstrap';
 
 import List from './List.jsx';
@@ -125,7 +125,7 @@ class App extends React.Component {
           updatedAt: '',
           createdAt: '',
           currName: '',
-        })
+        });
       })
       .catch((err) => console.error('handleDelete err', err));
   }
@@ -171,7 +171,7 @@ class App extends React.Component {
         <Row>
           <Col>
             <h1>Welcome to Drink Roulette!</h1>
-            <Button variant="outline-danger" onClick={this.getRandomDrink} size="lg" block>Get Drink</Button>
+            <Button className="getDrink" variant="outline-danger" onClick={this.getRandomDrink} size="lg" block>Get Drink</Button>
           </Col>
         </Row>
         <Row>
@@ -199,6 +199,7 @@ class App extends React.Component {
             }
           </Col>
         </Row>
+            { !name && <Row><Image src="./rouletteWheel.webp" className="wheel"/></Row>}
       </Container>
     );
   }

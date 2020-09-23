@@ -5,6 +5,7 @@ body {
 h1 {
   color: rgba(255, 0, 0, 0.596);
   padding-bottom: 32px;
+  text-align: center;
 }
 
 li {
@@ -36,4 +37,14 @@ p {
 h3{
   color: white;
   font-variant: small-caps;
+}
+
+.wheel {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding-top: 64px;
+}
+.getDrink{
+  margin-bottom: 32px;
 }

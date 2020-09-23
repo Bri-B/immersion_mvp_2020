@@ -8,7 +8,7 @@ const OrderedList = (props) => {
   const { list, nameClick } = props;
   return (
     <ul className="drinks-list">
-      <h1>View Drinks</h1>
+      <h3>View Drinks</h3>
       {_.map(list, (name, index) => <li id="name" className="drink" key={index} onClick={()=>nameClick(name)}>{name}</li>)}
     </ul>
   );
