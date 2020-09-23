@@ -98,10 +98,7 @@ class App extends React.Component {
       data: { name, newName },
       // responseType: 'json'
     })
-      .then(result => {
-        console.log(result);
-        // this.handleStateOnDelete();
-      });
+      .then(() => this.handleStateOnDelete());
   }
 
   handleDelete(name) {
